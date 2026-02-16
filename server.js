@@ -72,52 +72,43 @@ CREATE TABLE IF NOT EXISTS order_items (
 );
 `);
 
-function seedIfEmpty() {
-  const cnt = db.prepare("SELECT COUNT(*) AS c FROM products").get().c;
-  if (cnt > 0) return;
+const seed = [
+  // ===== KATEGORI 1: Jersey Kobarkan =====
+  {
+    name: "Jersey Kobarkan - Home",
+    price: 150000,          // nanti kamu edit
+    stock: 20,
+    category: "Jersey Kobarkan",
+    image_url: "https://picsum.photos/seed/jersey1/900/600",
+    description: "Jersey Kobarkan edisi home."
+  },
+  {
+    name: "Jersey Kobarkan - Away",
+    price: 150000,          // nanti kamu edit
+    stock: 15,
+    category: "Jersey Kobarkan",
+    image_url: "https://picsum.photos/seed/jersey2/900/600",
+    description: "Jersey Kobarkan edisi away."
+  },
 
-  const seed = [
-    {
-      name: "Kaos Basic Premium",
-      price: 79000,
-      stock: 25,
-      category: "Fashion",
-      image_url: "https://picsum.photos/seed/kaos/900/600",
-      description: "Kaos basic bahan lembut, nyaman dipakai harian."
-    },
-    {
-      name: "Sepatu Sneakers Urban",
-      price: 299000,
-      stock: 12,
-      category: "Fashion",
-      image_url: "https://picsum.photos/seed/sneakers/900/600",
-      description: "Sneakers gaya urban, ringan dan cocok untuk aktivitas."
-    },
-    {
-      name: "Botol Minum Stainless 600ml",
-      price: 119000,
-      stock: 30,
-      category: "Home",
-      image_url: "https://picsum.photos/seed/botol/900/600",
-      description: "Botol minum stainless, menjaga suhu lebih lama."
-    },
-    {
-      name: "Headset Wireless",
-      price: 249000,
-      stock: 18,
-      category: "Elektronik",
-      image_url: "https://picsum.photos/seed/headset/900/600",
-      description: "Headset wireless dengan mic, nyaman dan suara jernih."
-    },
-    {
-      name: "Lampu Meja Minimalis",
-      price: 159000,
-      stock: 10,
-      category: "Home",
-      image_url: "https://picsum.photos/seed/lampu/900/600",
-      description: "Lampu meja minimalis untuk ruang kerja."
-    }
-  ];
+  // ===== KATEGORI 2: Merchandise HME =====
+  {
+    name: "Merch HME - Pin",
+    price: 25000,           // nanti kamu edit
+    stock: 50,
+    category: "Merchandise HME",
+    image_url: "https://picsum.photos/seed/merch1/900/600",
+    description: "Pin merchandise HME."
+  },
+  {
+    name: "Merch HME - Keychain",
+    price: 25000,           // nanti kamu edit
+    stock: 40,
+    category: "Merchandise HME",
+    image_url: "https://picsum.photos/seed/merch2/900/600",
+    description: "Gantungan kunci merchandise HME."
+  }
+];
 
   const stmt = db.prepare(`
     INSERT INTO products (name, price, stock, category, image_url, description)
